@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sockets CRUD</title>
+</head>
+<body>
+    <form id="noteForm">
+        <input id="title" type="text">
+        <textarea id="description" rows="3"></textarea>
+        <button id="enviar">Send</button>
+    </form>
+
+    <ul id="notes">
+        
+    </ul>
+
+    <!--Da acceso a la varaible io-->
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <!--type='module' es para poder importar otros arhivos a el main-->
+    <script src="main.js" type="module"></script>
+</body>
+</html>
