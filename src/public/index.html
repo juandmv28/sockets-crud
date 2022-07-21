@@ -5,9 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sockets CRUD</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="./main.css">
 </head>
 <body>
-    <form id="noteForm">
+    <!-- <form id="noteForm">
         <input id="title" type="text">
         <textarea id="description" rows="3"></textarea>
         <button id="enviar">Send</button>
@@ -15,7 +21,21 @@
 
     <ul id="notes">
         
-    </ul>
+    </ul> -->
+
+    <div class="container h-100 p-4">
+        <div class="row h-100">
+            <div class="col-md-4 my-auto">
+                <form id="noteForm" class="card card-bpdy rounded-0">
+                    <input id="title" type="text" class="form-control rounded-0 mb-3" autofocus placeholder="Write a title..."/>
+                    <textarea id="description" rows="3" class="form-control rounded-0 mb-3" placeholder="Write a description..."></textarea>
+                    <button id="enviar" class="btn btn-dark rounded-0">Send</button>
+                </form>
+            </div>
+
+            <div class="col-md-8" id="notes"></div>
+        </div>
+    </div>
 
     <!--Da acceso a la varaible io-->
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>

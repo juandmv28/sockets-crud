@@ -19,7 +19,28 @@ export default (io) => {
             const newNote = new Note(data);
             // Se guarda en la DB
             const savedNote = await newNote.save();
-            socket.emit('server:newnote', savedNote);
+            io.emit('server:newnote', savedNote);
         });
+
+        socket.on('client:deletenote', async (id) => {
+            // Se borra la nota de la base de datos
+            await Note.findByIdAndDelete(id);
+            // Se ejecuta emit notes para volver a cargar las notas
+            emitNotes();
+        });
+
+        socket.on('client:getnote', async (id) => {
+            const note = await Note.findById(id);
+            io.emit('server:selectednote', note);
+        });
+
+        socket.on('client:updatenote', async (updatedNote) => {
+            await Note.findByIdAndUpdate(updatedNote._id, {
+                title: updatedNote.title,
+                description: updatedNote.description,
+            });
+            emitNotes();
+        });
+
     });
 }

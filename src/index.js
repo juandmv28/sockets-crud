@@ -6,6 +6,7 @@ import { Server as Websocketserver } from "socket.io";
 import http from 'http';
 // Se importa la función generada en sockets.js
 import sockets from './sockets';
+import { PORT } from './config';
 
 import { connectDB } from './db';
 
@@ -14,8 +15,8 @@ connectDB();
 // Aplicación de express --> Retorna server
 const server = http.createServer(app);
 // Puerto en el que escucha el servidor
-const httpServer = server.listen(3000);
-console.log('Server running and listening on port 3000');
+const httpServer = server.listen(PORT);
+console.log('Server running and listening on port', PORT);
 
 // Se crea servidor de websockets
 const io = new Websocketserver(httpServer);
